@@ -1,0 +1,13 @@
+[Unit]
+Description=bwpool_exporter
+After=init.service
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/bwpool_exporter -config /usr/local/etc/bwpool.json
+Restart=always
+RestartSec=4s
+StandardOutput=journal+console
+
+[Install]
+WantedBy=multi-user.target

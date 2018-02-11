@@ -1,0 +1,11 @@
+[[constraint]]
+  name = "github.com/prometheus/client_golang"
+  version = "0.8.0"
+
+[[constraint]]
+  name = "github.com/json-iterator/go"
+  version = "1.0.5"
+
+[[constraint]]
+  branch = "master"
+  name = "github.com/blockassets/prometheus_helper"

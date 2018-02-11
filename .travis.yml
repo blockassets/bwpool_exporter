@@ -1,0 +1,48 @@
+language: go
+go:
+- 1.x
+env:
+- DEP_VERSION="v0.4.1"
+before_install:
+- curl -L -s https://github.com/golang/dep/releases/download/${DEP_VERSION}/dep-linux-amd64 -o $GOPATH/bin/dep
+- chmod +x $GOPATH/bin/dep
+install:
+- dep ensure
+stages:
+- test
+- name: deploy-amd64
+  if: branch = master
+- name: deploy-darwin
+  if: branch = master
+jobs:
+  include:
+  - stage: test
+    script: make test
+  - stage: deploy-amd64
+    script: make amd64
+    before_deploy:
+    - git config --local user.name "lookfirst"
+    - git config --local user.email "latchkey@gmail.com"
+    - git tag "$(date '+%Y%m%d-%H%M%S')-$(git log --format=%h -1)-amd64"
+    deploy:
+      provider: releases
+      file: bwpool_exporter
+      skip_cleanup: true
+      api_key:
+        secure: W1AXJ5SIB0TJzJ/hRFW5S2C28ikRqM23sw1YyjgPz6aPEo/twvd1kzm71uA7lgS2f37Ny8eoV2GGsuUQAkJuXsXGv+USDE//QUHg4N8giInT4yFmnxnu6s/1lAreBzHw/XCHEIbV74QDgmrbF7Iaqx04GFFV9pdMjXMBXYiQWYSHXE7y1C/HG23VbCk6Myj0FH8BtdCPNTWEnrtOWcNktFx08ZIacEvYQBc6dQpFojtvDyVv2ZzvYp1ve68boL/hrECalnzxbSCeXgzuLEIH2h0W5MOQxwR4mn+P0vSZfzUxpfyQPTygfqZw4p5AsHEqsxDk6bX/lQonBeGlgG/ZpEu3NP+GS0rGOdqfzFHk7KeRGi2l+kdVNw8Rr10c/tSejT1ET+7yr7Ay0frpBoxgDOa+MId3X3+GjGSJAL5ZexMcyR4+K0PhA68S0WISbVJcWJtrv2VL7qGrIosnAGUXyye4ZNgAczi2tG4EJglgCyvDUbs+0WGJ7loEIdB5y69uwnWFFxg0YXk/v0AC5WbOfNgzHeO6He3QAkxARuNXYxMwALGSYbB/x0Y3oFPkemDLA8Cbcv/VjqGsIeD8HkWVyC71YhnD4ANR/0OfzHyXsSMZOOqS6epxsgjzB8ox/DiLUEDOKCODPjkK5mYCCY/JfQxTAIMM+8YPDC6KiiA/40U=
+      on:
+        repo: blockassets/bwpool_exporter
+  - stage: deploy-darwin
+    script: make darwin
+    before_deploy:
+    - git config --local user.name "lookfirst"
+    - git config --local user.email "latchkey@gmail.com"
+    - git tag "$(date '+%Y%m%d-%H%M%S')-$(git log --format=%h -1)-darwin"
+    deploy:
+      provider: releases
+      file: bwpool_exporter
+      skip_cleanup: true
+      api_key:
+        secure: W1AXJ5SIB0TJzJ/hRFW5S2C28ikRqM23sw1YyjgPz6aPEo/twvd1kzm71uA7lgS2f37Ny8eoV2GGsuUQAkJuXsXGv+USDE//QUHg4N8giInT4yFmnxnu6s/1lAreBzHw/XCHEIbV74QDgmrbF7Iaqx04GFFV9pdMjXMBXYiQWYSHXE7y1C/HG23VbCk6Myj0FH8BtdCPNTWEnrtOWcNktFx08ZIacEvYQBc6dQpFojtvDyVv2ZzvYp1ve68boL/hrECalnzxbSCeXgzuLEIH2h0W5MOQxwR4mn+P0vSZfzUxpfyQPTygfqZw4p5AsHEqsxDk6bX/lQonBeGlgG/ZpEu3NP+GS0rGOdqfzFHk7KeRGi2l+kdVNw8Rr10c/tSejT1ET+7yr7Ay0frpBoxgDOa+MId3X3+GjGSJAL5ZexMcyR4+K0PhA68S0WISbVJcWJtrv2VL7qGrIosnAGUXyye4ZNgAczi2tG4EJglgCyvDUbs+0WGJ7loEIdB5y69uwnWFFxg0YXk/v0AC5WbOfNgzHeO6He3QAkxARuNXYxMwALGSYbB/x0Y3oFPkemDLA8Cbcv/VjqGsIeD8HkWVyC71YhnD4ANR/0OfzHyXsSMZOOqS6epxsgjzB8ox/DiLUEDOKCODPjkK5mYCCY/JfQxTAIMM+8YPDC6KiiA/40U=
+      on:
+        repo: blockassets/bwpool_exporter
