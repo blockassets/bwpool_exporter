@@ -1,15 +1,15 @@
 package bwpool
 
 import (
-	"io/ioutil"
-	"net/http"
-	"time"
 	"crypto/hmac"
 	"crypto/md5"
 	"encoding/hex"
+	"io/ioutil"
+	"net/http"
 	"net/url"
 	"strconv"
 	"strings"
+	"time"
 
 	"github.com/json-iterator/go"
 )
@@ -95,9 +95,10 @@ func (c *BWClient) FetchWorkers() (*PoolData, error) {
 	}
 
 	workers := Workers{}
-	for _, worker := range response.Workers {
+	for _, worker := range response.Datas.Workers {
 		workers[worker.Name] = worker
 	}
+
 	pd := &PoolData{
 		Workers: workers,
 	}

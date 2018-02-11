@@ -1,9 +1,12 @@
 package bwpool
 
+/* name:Worker */
+type Workers map[string]Worker
+
 /* Container */
 type PoolData struct {
 	Bogus   Bogus
-	Workers Workers
+	Workers Workers `json:"Workers"`
 }
 
 type Bogus struct {
@@ -11,13 +14,17 @@ type Bogus struct {
 }
 
 type WorkerResponse struct {
-	UserName string   `json:userName`
-	Total    int64    `json:total`
-	Workers  []Worker `json:"worker"`
+	Code    int    `json:"code"`
+	Message string `json:"message"`
+	Datas   Datas  `json:"Datas"`
 }
 
-/* name:Worker */
-type Workers map[string]Worker
+type Datas struct {
+	UserName string   `json:"userName"`
+	Page     int      `json:"page"`
+	Total    int64    `json:"total"`
+	Workers  []Worker `json:"workers"`
+}
 
 /*
  {
