@@ -132,13 +132,12 @@ func hmacSign(message []byte, key []byte) []byte {
 }
 
 func ReadConfig(path string) (*PoolConfig, error) {
-	pc := &PoolConfig{}
-
 	data, err := ioutil.ReadFile(path)
 	if err != nil {
 		return nil, err
 	}
 
+	pc := &PoolConfig{}
 	err = json.Unmarshal(data, pc)
 	if err != nil {
 		return nil, err
