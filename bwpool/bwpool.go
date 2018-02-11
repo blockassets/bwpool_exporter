@@ -4,15 +4,15 @@ import (
 	"io/ioutil"
 	"net/http"
 	"time"
-
 	"crypto/hmac"
 	"crypto/md5"
 	"encoding/hex"
 	"fmt"
-	"github.com/json-iterator/go"
 	"net/url"
 	"strconv"
 	"strings"
+
+	"github.com/json-iterator/go"
 )
 
 // Why isn't this part of the stdlib?!
