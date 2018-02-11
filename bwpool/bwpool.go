@@ -34,6 +34,7 @@ func fetchData(url string, postData string, timeout time.Duration) (*[]byte, err
 		return nil, err
 	}
 
+	req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
 	req.Header.Set("User-Agent", "bwpool_exporter")
 
 	res, err := client.Do(req)
