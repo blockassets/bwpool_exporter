@@ -96,7 +96,7 @@ func (c *BWClient) FetchWorkers() (*PoolData, error) {
 		return nil, err
 	}
 
-	workers := make(Workers)
+	workers := Workers{}
 	for _, worker := range response.Workers {
 		workers[worker.Name] = worker
 	}
