@@ -7,7 +7,6 @@ import (
 	"crypto/hmac"
 	"crypto/md5"
 	"encoding/hex"
-	"fmt"
 	"net/url"
 	"strconv"
 	"strings"
@@ -43,7 +42,6 @@ func fetchData(url string, postData string, timeout time.Duration) (*[]byte, err
 	}
 
 	body, err := ioutil.ReadAll(res.Body)
-	fmt.Println(string(body[:]))
 	if err != nil {
 		return nil, err
 	}
@@ -58,7 +56,6 @@ func workerValues(username string, publicKey string, nonce string, signature str
 	v.Set("nonce", nonce)
 	v.Set("signature", signature)
 	v.Set("pageSize", "100")
-	fmt.Println(v.Encode())
 	return v
 }
 
