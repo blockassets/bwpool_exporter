@@ -36,7 +36,11 @@ Install [dep](https://github.com/golang/dep) and the dependencies...
 
 `make linux`
 
-### Install onto miner
+### Build binary for darwin
+
+`make darwin`
+
+### Install
 
 The [releases tab](https://github.com/blockassets/bwpool_exporter/releases) has `master` binaries cross compiled for Linux AMD64 and Darwin. These are built automatically on [Travis](https://travis-ci.org/blockassets/bwpool_exporter).
 
