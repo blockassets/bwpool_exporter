@@ -27,6 +27,7 @@ var (
 const (
 	ghUser = "blockassets"
 	ghRepo = "bwpool_exporter"
+	twiceADay = 12 * time.Hour
 )
 
 func main() {
@@ -42,7 +43,7 @@ func main() {
 	if *noUpdate {
 		prog(overseer.State{Address: portStr})
 	} else {
-		overseerRun(portStr, 1*time.Minute)
+		overseerRun(portStr, twiceADay)
 	}
 }
 
