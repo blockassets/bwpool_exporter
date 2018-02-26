@@ -6,7 +6,6 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"runtime"
 	"time"
 
 	"github.com/blockassets/bwpool_exporter/bwpool"
@@ -60,7 +59,7 @@ func overseerRun(port string, interval time.Duration) {
 }
 
 func prog(state overseer.State) {
-	log.Printf("%s %s %s %s on port %s\n", os.Args[0], version, runtime.GOOS, runtime.GOARCH, state.Address)
+	log.Printf("%s %s on port %s\n", os.Args[0], version, state.Address)
 
 	poolConfig, err := bwpool.ReadConfig(*config)
 	if err != nil {
