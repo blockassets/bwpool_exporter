@@ -2,6 +2,39 @@
 
 
 [[projects]]
+  name = "github.com/aws/aws-sdk-go"
+  packages = [
+    "aws",
+    "aws/awserr",
+    "aws/awsutil",
+    "aws/client",
+    "aws/client/metadata",
+    "aws/corehandlers",
+    "aws/credentials",
+    "aws/credentials/ec2rolecreds",
+    "aws/credentials/endpointcreds",
+    "aws/credentials/stscreds",
+    "aws/defaults",
+    "aws/ec2metadata",
+    "aws/endpoints",
+    "aws/request",
+    "aws/session",
+    "aws/signer/v4",
+    "internal/sdkrand",
+    "internal/shareddefaults",
+    "private/protocol",
+    "private/protocol/query",
+    "private/protocol/query/queryutil",
+    "private/protocol/rest",
+    "private/protocol/restxml",
+    "private/protocol/xml/xmlutil",
+    "service/s3",
+    "service/sts"
+  ]
+  revision = "f7f1ee9550cc76ceea731d99c8dbe00a0c39f66d"
+  version = "v1.13.4"
+
+[[projects]]
   branch = "master"
   name = "github.com/beorn7/perks"
   packages = ["quantile"]
@@ -14,16 +47,42 @@
   revision = "e7ef97c0812fc512bb78da1a16e16afa367d8264"
 
 [[projects]]
+  name = "github.com/go-ini/ini"
+  packages = ["."]
+  revision = "32e4c1e6bc4e7d0d8451aa6b75200d19e37a536a"
+  version = "v1.32.0"
+
+[[projects]]
   name = "github.com/golang/protobuf"
   packages = ["proto"]
   revision = "925541529c1fa6821df4e44ce2723319eb2be768"
   version = "v1.0.0"
 
 [[projects]]
+  name = "github.com/jmespath/go-jmespath"
+  packages = ["."]
+  revision = "0b12d6b5"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/jpillora/overseer"
+  packages = [
+    ".",
+    "fetcher"
+  ]
+  revision = "7516f444813ce395f57562c049a0c2ac5e0283cb"
+
+[[projects]]
   name = "github.com/json-iterator/go"
   packages = ["."]
   revision = "28452fcdec4e44348d2af0d91d1e9e38da3a9e0a"
   version = "1.0.5"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/kardianos/osext"
+  packages = ["."]
+  revision = "ae77be60afb1dcacde03767a8c37337fad28ac14"
 
 [[projects]]
   name = "github.com/matttproud/golang_protobuf_extensions"
@@ -70,6 +129,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "0603945b8b52948555c7a5a58b5b217951c5af9c69ffb40d24758572555235c1"
+  inputs-digest = "dea42d9518c0daf9971699a7b5f3923ca8d8fa79c86a8a850f318880eeed18f8"
   solver-name = "gps-cdcl"
   solver-version = 1

@@ -9,3 +9,7 @@
 [[constraint]]
   branch = "master"
   name = "github.com/blockassets/prometheus_helper"
+
+[[constraint]]
+  branch = "master"
+  name = "github.com/jpillora/overseer"
