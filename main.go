@@ -50,7 +50,6 @@ func overseerRun(port string, interval time.Duration) {
 	overseer.Run(overseer.Config{
 		Program: prog,
 		Address: port,
-		Debug: true,
 		Fetcher: &fetcher.Github{
 			User:     ghUser,
 			Repo:     ghRepo,
