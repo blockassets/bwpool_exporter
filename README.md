@@ -19,7 +19,7 @@ bwpool.json:
 ```
 
 ```
-./bwpool_exporter -config bwpool.json
+./bwpool_exporter-linux-amd64 -config bwpool.json
 ```
 
 Note: if you remove a worker, you need to restart the exporter.
@@ -30,15 +30,15 @@ Install [dep](https://github.com/golang/dep) and the dependencies...
 
 `make dep`
 
-### Build binary for amd64
+### Build binary for linux
 
-`make amd64`
+`make linux`
 
 ### Install onto miner
 
-The [releases tab](https://github.com/blockassets/bwpool_exporter/releases) has `master` binaries cross compiled for AMD64 and Darwin. These are built automatically on [Travis](https://travis-ci.org/blockassets/bwpool_exporter).
+The [releases tab](https://github.com/blockassets/bwpool_exporter/releases) has `master` binaries cross compiled for Linux AMD64 and Darwin. These are built automatically on [Travis](https://travis-ci.org/blockassets/bwpool_exporter).
 
-Download the latest release and copy the `bwpool_exporter` binary to `/usr/local/bin`
+Download the latest release and copy the `bwpool_exporter-linux-amd64` binary to `/usr/local/bin`
 
 ```
 chmod ugo+x bwpool_exporter
@@ -55,7 +55,7 @@ After=init.service
 
 [Service]
 Type=simple
-ExecStart=/usr/local/bin/bwpool_exporter -key-file /usr/local/etc/litecoinpool-api-key.txt
+ExecStart=/usr/local/bin/bwpool_exporter-linux-amd64 -key-file /usr/local/etc/litecoinpool-api-key.txt
 Restart=always
 RestartSec=4s
 StandardOutput=journal+console

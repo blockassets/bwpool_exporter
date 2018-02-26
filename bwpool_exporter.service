@@ -4,7 +4,7 @@ After=init.service
 
 [Service]
 Type=simple
-ExecStart=/usr/local/bin/bwpool_exporter -config /usr/local/etc/bwpool.json
+ExecStart=/usr/local/bin/bwpool_exporter-linux-amd64 -config /usr/local/etc/bwpool.json
 Restart=always
 RestartSec=4s
 StandardOutput=journal+console
