@@ -19,10 +19,12 @@ bwpool.json:
 ```
 
 ```
-./bwpool_exporter-linux-amd64 -config bwpool.json
+./bwpool_exporter-linux-amd64 -config bwpool.json -no-update=false
 ```
 
 Note: if you remove a worker, you need to restart the exporter.
+
+By default, the exporter will automatically attempt to self update from the Github [latest release](https://github.com/blockassets/bwpool_exporter/releases) tab. Pass `-no-update=true` to disable this feature.
 
 ### Setup
 
@@ -41,8 +43,9 @@ The [releases tab](https://github.com/blockassets/bwpool_exporter/releases) has 
 Download the latest release and copy the `bwpool_exporter-linux-amd64` binary to `/usr/local/bin`
 
 ```
-chmod ugo+x bwpool_exporter
-scp bwpool_exporter root@SERVER_IP:/usr/local/bin
+gunzip bwpool_exporter-linux-amd64.gz
+chmod ugo+x bwpool_exporter-linux-amd64
+scp bwpool_exporter-linux-amd64 root@SERVER_IP:/usr/local/bin
 ```
 
 Create `/etc/systemd/system/bwpool_exporter.service`
@@ -55,7 +58,7 @@ After=init.service
 
 [Service]
 Type=simple
-ExecStart=/usr/local/bin/bwpool_exporter-linux-amd64 -key-file /usr/local/etc/litecoinpool-api-key.txt
+ExecStart=/usr/local/bin/bwpool_exporter-linux-amd64 -key-file /usr/local/etc/bwpool-api-key.txt
 Restart=always
 RestartSec=4s
 StandardOutput=journal+console
