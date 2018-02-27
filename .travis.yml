@@ -7,9 +7,7 @@ install:
 - dep ensure
 stages:
 - test
-- name: deploy-amd64
-  if: branch = master
-- name: deploy-darwin
+- name: deploy
   if: branch = master
 jobs:
   include:
@@ -20,7 +18,7 @@ jobs:
     before_deploy:
     - git config --local user.name "lookfirst"
     - git config --local user.email "latchkey@gmail.com"
-    - git tag "$(date '+%Y%m%d-%H%M%S')-$(git log --format=%h -1)"
+    - git tag "$(date '+%Y%m%d-%H%M%S')-$(git log --format=%h -1)-${TRAVIS_BUILD_NUMBER}"
     deploy:
       provider: releases
       file:
